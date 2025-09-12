@@ -9,7 +9,7 @@ from sklearn.neighbors import NearestNeighbors
 
 ## PUNTO 1
 #Caricamento dataset
-df = pd.read_csv("Wholesale customers data.csv")
+df = pd.read_csv("Datasets/Wholesale customers data.csv")
 
 # EscludO Channel e Region
 X = df.drop(columns=["Channel", "Region"])
@@ -34,8 +34,6 @@ plt.title(f"K-distance plot (k={k})", fontsize=14)
 plt.xlabel("Punti ordinati", fontsize=12)
 plt.ylabel(f"{k}-esima distanza", fontsize=12)
 plt.grid(True, linestyle="--", alpha=0.6)
-
-plt.legend()
 plt.show()
 
 # PUNTO 4
