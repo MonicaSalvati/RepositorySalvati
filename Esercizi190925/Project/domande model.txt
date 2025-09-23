@@ -1,0 +1,40 @@
+What is the model type? (e.g., Neural Networks, Decision Trees, etc.)
+
+
+Describe the model used
+
+
+Tell me about the status among these: Under Preparation, Regularly updated, Actively Maintained, Deprecated
+
+
+Give me the relevant links (like GitHub repository, paper/documentation link, initative demo,conference talk, api link)
+
+
+Tell me the name and team of the developers
+
+
+Tell me the name and team of the owner
+
+
+Tell me the version details and artifacts
+
+
+Tell me about the intended usage
+
+
+Describe the model architecture (data collection and preprocessing, data splitting, etc)
+
+
+Describe the model training process (initialization, loss function, optimizer, hyperparameters)
+
+
+What is the model supposed to achieve (problem statement, business goals)?
+
+
+Which performance metrics have been used?
+
+
+Which explainability techniques have been used? (like SHAP, LIME, etc)?
+
+
+Who are the authors of this documentation?

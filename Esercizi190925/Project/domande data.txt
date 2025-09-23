@@ -1,0 +1,82 @@
+Chi è il data owner ? 
+
+
+Quale è la versione dei dati ?
+
+
+Quali sono i reviewers?
+
+
+Fammi la descrizione del dataset usato.
+
+
+Quale status ha il dataset tra : Under Preparation, Regurarly Updated, Actively Maintained, Limited Maintenance o Deprecated ?
+
+
+Dammi I link rilevanti come la github repository, paper link o altro ?
+
+
+Nome degli sviluppatori e dell'Owner ?
+
+
+Dammi informazioni sul Data version control tools.
+
+
+Dammi informazioni su Maintenance of Metadata and Schema Versioning.
+
+
+Per ogni modello utilizzato dimmi il nome del modello, il task generale e per quale motivo è stato usato il dataset per quel modello.
+
+
+Fammi l'esempio di un applicazione e come per quale motivo è stato usato il dataset.
+
+
+Dimmi queste informazioni sul dataset utilizzato: Tipo di dati, Dimensione, numero di istanze, uso primario, numero di feature, AI system associati, Dove i dati sono stati presi, e la data di creazione del dataset.
+
+
+Dimmi queste informazioni del dataset: l'origine, se sono stati usati dati di terze parti e se è stato creato in modo etico e legale.
+
+
+Dimmi la storia e l'origine dei dati in breve.
+
+
+Quali sono i metodi usati per raccogliere i dati?
+
+
+La sorgente è considerata ad alto rischio ? 
+
+
+Quali step sono stati fatti sui dati? Come sono stati fatti il Data cleaning, Data Transformation, Feature Engineering, Dimensionality Reduction e Data augmentation ? 
+
+
+Come è stata fatta l'etichettatura dei dati ?
+
+
+Che tipo di validazione è stato fatto sui dati ? 
+
+
+Quali sono stati i metodi per il campionamento ?
+
+
+Che tipo di licensing e di distribuzione ha il dataset ? 
+
+
+Quali sono i requisiti e le specifiche di accesso, retention e deletion dei dati ? 
+
+
+Quale è il rischio sui dati ( data risk assessment) ? 
+
+
+Che misure sono state applicate per la sicurezza dei dati in ambito data storage, data transfer e data processing ? 
+
+
+Quale Data post-market monitoring sono stati applicati?
+
+
+Specifica la dichiarazione di conformita dell' EU AI Act Articolo 47 e i suoi standard che sono stati applicati.
+
+
+Quali sono i nomi degli autori ? 
+
+
+

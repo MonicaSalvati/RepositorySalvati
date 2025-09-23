@@ -1,0 +1,6 @@
+write_poem:
+  description: >
+    Write an answer to the following question {user_query} using the research findings.
+  expected_output: >
+    A beautifully crafted answer.
+  agent: answer_writer

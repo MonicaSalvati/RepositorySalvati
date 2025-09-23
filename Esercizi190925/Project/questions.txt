@@ -1,0 +1,50 @@
+Puoi fornirmi il link alla repository?
+
+
+Chi è l'autore del progetto?
+
+
+Provide general information, purposes and intended use of the project, following, when possible, the following items:
+Description of the AI system's intended purpose, including the sector of deployment.
+Clearly state the problem the AI application aims to solve.
+Delineate target users and stakeholders.
+Set measurable goals and key performance indicators (KPIs).
+Consider ethical implications and regulatory constraints.
+Clear statement on prohibited uses or potential misuse scenarios.
+Operational environment: Describe where and how the AI system will operate, such as on mobile devices, cloud platforms, or embedded system
+
+
+What are the application functionalities? When possible  use the following items to structurate your answer:
+Instructions for use for deployers: 
+Model Capabilities:
+    What the application can and cannot do (limitations).
+    Supported languages, data types, or scenarios.
+Input Data Requirements:
+   Format and quality expectations for input data.
+   Examples of valid and invalid inputs.
+Output Explanation:
+   How to interpret predictions, classifications, or recommendations.
+   Uncertainty or confidence measures, if applicable.
+System Architecture Overview:
+   Functional description and architecture of the system.
+   Describe the key components of the system (including datasets, algorithms, models, etc.)
+
+
+Using the following template, provide the required information about the project.
+ 
+## Deployment
+   
+* Infrastructure and environment details (e.g., cloud setup, APIs).
+* Integration with external systems or applications.
+ 
+### Infrastructure and Environment Details
+ 
+* **Cloud Setup**:
+  * Specify cloud provider (e.g., AWS, Azure, GCP) and regions.
+  * List required services: compute (e.g., EC2, Kubernetes), storage (e.g., S3, Blob Storage), and databases (e.g., DynamoDB, Firestore).
+  * Define resource configurations (e.g., VM sizes, GPU/TPU requirements).
+  * Network setup: VPC, subnets, and security groups.
+* **APIs**:
+  * API endpoints, payload structure, authentication methods (e.g., OAuth, API keys).
+  * Latency and scalability expectations. 
+

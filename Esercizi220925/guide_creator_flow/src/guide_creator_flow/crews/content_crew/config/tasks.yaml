@@ -1,0 +1,10 @@
+evaluation_task:
+  description: >
+    Conduct a thorough ethical analysis about {user_query}
+  expected_output: >
+    Your output is a json object with a single key "Final Result" and a boolean value.
+    True if the query is ethical, False if the query is not ethical.
+    Example 1: {"Final_Result": True}
+    Example 2: {"Final_Result": False}
+  human_input: true
+  agent: evaluator
