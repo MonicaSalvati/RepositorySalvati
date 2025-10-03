@@ -1,0 +1,14 @@
+research_task:
+  description: >
+    Conduct a thorough research about user query ({user_query}).
+    You mustn't modify the user query!
+  expected_output: >
+    A JSON objects formatted in this way:
+    {
+      "results": 
+      [{"source": <url1>, "content": <content1>},
+      {"source": <url2>, "content": <content2>},
+      {....}]
+    }
+  agent: web_researcher
+

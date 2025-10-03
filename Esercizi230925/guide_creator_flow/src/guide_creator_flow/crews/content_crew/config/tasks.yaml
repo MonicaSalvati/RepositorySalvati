@@ -1,0 +1,12 @@
+evaluation_task:
+  description: >
+    Conduct a thorough ethical analysis about {user_query}.
+    If the user input is a mathematical expression, return "MathExpression" instead of an ethical evaluation.
+  expected_output: >
+    Your output must be a json object with a single key "Final_Result" and a string value.
+    Use "EticalQuery" if the query is ethical, "NonEticalQuery" if the query is not ethical, or "MathExpression" if the input is a mathematical expression.
+    Example 1: {"Final_Result": "EticalQuery"}
+    Example 2: {"Final_Result": "NonEticalQuery"}
+    Example 3: {"Final_Result": "MathExpression"}
+  human_input: true
+  agent: evaluator

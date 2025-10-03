@@ -1,0 +1,11 @@
+research_task:
+  description: >
+    Conduct a Rag search using your tool to find the most relevant documents to respond to the user query ({user_query}).
+    Send to the tool just the user query.
+    Make sure to include metadata to the output documents.
+  expected_output: >
+    Your output must be a JSON object made like this:
+    {
+      "docs": [<doc1>, <doc2>, ...]
+    }
+  agent: researcher

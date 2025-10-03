@@ -1,0 +1,110 @@
+rag_answer_task:
+  description: >
+    Given a user question ({user_query}) and a set of retrieved documents from a knowledge base ({documents}) and documents
+    from a web research ({web_documents}), analyze only the provided content to craft an evidence-grounded answer about {topic}.
+    Steps:
+      1. Quickly restate the interpreted question (no embellishment).
+      2. Select only passages strictly relevant to the question.
+      3. Prioritize documents with metadata trusted=True.
+        a. If two or more documents contain overlapping information, use only those with trusted=True.
+        b. Ignore trusted=False documents if the same information is already available in trusted sources.
+      4. If only documents with trusted=False are available, use them but insert a warning that the files are not trusted.
+      5. Synthesize a concise, direct answer first (no citations inline yet).
+      6. Provide a structured expansion (when useful) with subsections.
+      7. List supporting evidence mapping each claim to source identifiers (e.g. doc_id, title, line/fragment).
+      8. If information is missing or uncertain, explicitly state the gap (do NOT speculate).
+      9. Avoid hallucinations; do not add external knowledge not present in retrieved_docs.
+      10. Maintain neutrality and precision; avoid marketing tone.
+    Constraints:
+      1. Do not invent sources, use only provided documents.
+      2. Prefer bullet points for lists.
+      3. Keep initial direct answer ≤ 120 words when possible.
+      4. The answer must be in the same language of the input query.
+      5. Always trace the sources of the documents you used (file name or url).
+      6. DO NOT ADD INFORMATIONS THAT ARE NOT INCLUDED IN THE CONTEXT (WEB RESEARCH AND KNOWLEDGE BASE).
+  expected_output: >
+    An answer in the following structure:
+
+    Question:
+    <restated question>
+
+    Direct Answer:
+    <concise answer>
+
+    Expanded Explanation:
+    <optional structured sections with headings>
+
+    Key Points:
+    - <bullet 1>
+    - <bullet 2>
+    ...
+
+    Supporting Evidence:
+    - Source <INSERT HERE THE SOURCE KEY OF THE DOCUMENT USED>: "<relevant excerpt>" -> Supports: <claim/section>
+    - ...
+
+    Limitations / Unknowns (if any):
+    - <gap or uncertainty>
+
+    If no sufficient evidence: clearly state "Insufficient information in provided documents."
+  agent: rag_responder
+
+markdown_article_task:
+  description: >
+    Using the RAG answer (from rag_answer_task) plus the same retrieved documents for validation,
+    produce a well-structured, maintainable Markdown knowledge article about {topic} answering
+    the user question ({user_query}). Goals:
+      1. Title (H1) concise and user-oriented.
+      2. Optional Table of Contents if more than 4 H2 sections.
+      3. Clear hierarchy: H1 (title), H2 (main sections), H3 (subsections).
+      4. Include sections when applicable: Overview, Core Concepts, Step-by-Step / How It Works,
+         Examples, Best Practices, Common Pitfalls / Anti-Patterns, FAQ, Troubleshooting, References.
+      5. Integrate only evidence-supported claims; no external unverifiable additions.
+      6. Use consistent terminology; avoid redundancy.
+      7. Use fenced code blocks only if examples are necessary (specify language).
+      8. References section maps includes the source of the documents used to respond, whether is a file name or a url. 
+      9. Use only the "source" key of the documents.
+      10. If gaps exist, include a "Knowledge Gaps / Further Research" section.
+    Style:
+      - Neutral, technical, concise.
+      - Bullets over long paragraphs where suitable.
+      - No promotional language.
+      - The content of the file must be in the same language of the input query.
+  expected_output: >
+    A single valid Markdown document (no enclosing ``` fences) with:
+
+    # <Title>
+
+    (Optional) Table of Contents
+
+    ## Overview
+    ...
+    
+    ## Days (if a travel-guide is asked)
+    ...
+
+    ## Restaurants (if a list of Restaurants is asked)
+    ...
+
+    ## Hotels (if a list of Hotels is asked)
+
+    ## Examples
+    ...
+
+    ## Best Practices
+    ...
+
+    ## Common Pitfalls
+    ...
+
+    ## FAQ
+    - Q: <question>? A: <answer>
+
+    ## References
+    - <INSERT HERE THE SOURCE >: <brief relevance>
+  
+    ## Knowledge Gaps / Further Research (this section only if applicable)
+    - <gap>
+  context:
+    - rag_answer_task
+  agent: markdown_author

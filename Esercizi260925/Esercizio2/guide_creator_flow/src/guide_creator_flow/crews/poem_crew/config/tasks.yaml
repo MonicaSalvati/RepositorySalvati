@@ -1,0 +1,9 @@
+evaluate_relevance:
+  description: >
+    Given an input user_query ({user_query}) and a topic ({topic}), evaluate whether the user_query is
+    relevant to the topic using: keyword/concept overlap, user intent, and implicit context.
+    If evidence is insufficient, classify as not relevant. Output only the specified JSON.
+  expected_output: >
+    A single JSON object exactly in the form: {"relevance": <bool>}
+    (true if the user_query is relevant to topic, otherwise false). No extra text.
+  agent: relevance_evaluator

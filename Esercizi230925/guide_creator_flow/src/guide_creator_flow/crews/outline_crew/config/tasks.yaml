@@ -1,0 +1,23 @@
+topic_task:
+  description: >
+    Analyze the user's query and extract a list of 5 key topics related to the main subject.
+    Ensure the topics are relevant and cover different important aspects of the {user_query}.
+  expected_output: >
+    A list of 5 topics, each as a short and clear phrase, directly related to the user's query.
+    Example 1: {"topics": ["<Topic 1>", "<Topic 2>", "<Topic 3>", "<Topic 4>", "<Topic 5>"]}
+  agent: topic_extractor
+
+bias_review_task:
+  description: >
+    Analyze the provided list in the key topics of the dictionary created in the previous task (from the user_query: {user_query}) 
+    for bias, accuracy, tone, and risks.
+    For each topic, identify and flag subjective language, missing perspectives, possible inaccuracies, tone issues, or risks.
+    Remove any topic that is found to be problematic or not objective.
+  expected_output: >
+    A list of topics, identical to the input if no topics were removed.
+    If any topics were eliminated due to bias or other issues, return the reduced list.
+    Example 1 (no removals): {"topics": ["<Topic 1>", "<Topic 2>", "<Topic 3>", "<Topic 4>", "<Topic 5>"]}
+    Example 2 (some removed): {"topics": ["<Topic 1>", "<Topic 3>", "<Topic 5>"]}
+  context:
+    - topic_task
+  agent: bias_reviewer

@@ -1,0 +1,104 @@
+rag_answer_task:
+  description: >
+    Given a user question ({user_query}) and a set of retrieved documents ({documents}),
+    analyze only the provided content to craft an evidence-grounded answer about {topic}.
+    Steps:
+      1. Quickly restate the interpreted question (no embellishment).
+      2. Select only passages strictly relevant to the question.
+      3. Synthesize a concise, direct answer first (no citations inline yet).
+      4. Provide a structured expansion (when useful) with subsections.
+      5. List supporting evidence mapping each claim to source identifiers (e.g. doc_id, title, line/fragment).
+      6. If information is missing or uncertain, explicitly state the gap (do NOT speculate).
+      7. Avoid hallucinations; do not add external knowledge not present in retrieved_docs.
+      8. Maintain neutrality and precision; avoid marketing tone.
+    Constraints:
+      - Do not invent sources.
+      - Prefer bullet points for lists.
+      - Keep initial direct answer ≤ 120 words when possible.
+  expected_output: >
+    An answer in the following structure:
+
+    Question:
+    <restated question>
+
+    Direct Answer:
+    <concise answer>
+
+    Expanded Explanation:
+    <optional structured sections with headings>
+
+    Key Points:
+    - <bullet 1>
+    - <bullet 2>
+    ...
+
+    Supporting Evidence:
+    - Source <doc_id or title>: "<relevant excerpt>" -> Supports: <claim/section>
+    - ...
+
+    Limitations / Unknowns (if any):
+    - <gap or uncertainty>
+
+    If no sufficient evidence: clearly state "Insufficient information in provided documents."
+  agent: rag_responder
+
+markdown_article_task:
+  description: >
+    Using the RAG answer (from rag_answer_task) plus the same retrieved documents for validation,
+    produce a well-structured, maintainable Markdown knowledge article about {topic} answering
+    the user question ({user_query}). Goals:
+      1. Title (H1) concise and user-oriented.
+      2. Optional Table of Contents if more than 4 H2 sections.
+      3. Clear hierarchy: H1 (title), H2 (main sections), H3 (subsections).
+      4. Include sections when applicable: Overview, Core Concepts, Step-by-Step / How It Works,
+         Examples, Best Practices, Common Pitfalls / Anti-Patterns, FAQ, Troubleshooting, References.
+      5. Integrate only evidence-supported claims; no external unverifiable additions.
+      6. Use consistent terminology; avoid redundancy.
+      7. Use fenced code blocks only if examples are necessary (specify language).
+      8. References section maps claims to source identifiers (doc ids or titles).
+      9. If gaps exist, include a "Knowledge Gaps / Further Research" section.
+    Style:
+      - Neutral, technical, concise.
+      - Bullets over long paragraphs where suitable.
+      - No promotional language.
+  expected_output: >
+    A single valid Markdown document (no enclosing ``` fences) with:
+
+    # <Title>
+
+    (Optional) Table of Contents
+
+    ## Overview
+    ...
+
+    ## Core Concepts
+    ...
+
+    ## How It Works
+    ...
+
+    ## Examples
+    ...
+
+    ## Best Practices
+    ...
+
+    ## Common Pitfalls
+    ...
+
+    ## FAQ
+    - Q: <question>? A: <answer>
+
+    ## Troubleshooting
+    - Issue: <issue> | Cause: <cause> | Resolution: <resolution>
+
+    ## References
+    - <doc_id or title>: <brief relevance>
+
+    (Optional) ## Knowledge Gaps / Further Research
+    - <gap>
+
+    Document must be self-contained and ready for version control.
+  context:
+    - rag_answer_task
+  agent: markdown_author

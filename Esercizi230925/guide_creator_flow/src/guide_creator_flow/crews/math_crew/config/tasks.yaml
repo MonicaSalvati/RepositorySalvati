@@ -1,0 +1,10 @@
+python_code_task:
+  description: >
+    Convert the user's request ({user_query}) into executable Python code.
+    Ensure the generated code is clear, efficient, and ready to run.
+    The code should directly address the user's question and be suitable 
+    for execution by the tool (Using exec).
+    You must use variable "result" to store the result of the expression evaluation 
+  expected_output: >
+    The output consists of the direct execution result of the generated Python code, without any modifications.
+  agent: python_code_agent

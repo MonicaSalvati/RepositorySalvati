@@ -1,0 +1,27 @@
+compose_markdown_file:
+  description: >
+    Receive the user's question ({user_query}) and a dictionary where keys are topics and 
+    values are paragraphs about those topics ({topic_paragraphs}). 
+    Compose a well-structured and readable Markdown (.md) file that organizes and presents 
+    the provided paragraphs in a cohesive manner, ensuring proper Markdown formatting and logical flow.
+  expected_output: >
+    A single, well-formatted Markdown (.md) file that organizes the input paragraphs by topic.
+    Each topic should be introduced by a clear and consistent Markdown heading (e.g., # or ##).
+    Ensure that:
+      - Headings are used appropriately for each topic.
+      - There is a blank line between headings and paragraphs.
+      - Paragraphs are not inside code blocks or lists unless required.
+      - The file does not include unnecessary whitespace or Markdown syntax errors.
+      - The overall structure is logical, readable, and visually clean.
+    Example output:
+      # Main Title
+
+      ## Topic 1
+
+      <Paragraph about Topic 1>
+
+      ## Topic 2
+
+      <Paragraph about Topic 2>
+  agent: markdown_composer
+  output_file: output/report.md

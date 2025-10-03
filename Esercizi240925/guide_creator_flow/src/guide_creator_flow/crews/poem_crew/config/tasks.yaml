@@ -1,0 +1,11 @@
+sum_task:
+  description: >
+    Prompt the user to provide two numbers ({n1} and {n2}) , validate that both inputs are numeric,
+    call the "adder_tool" with the two validated numbers, and return the tool's result
+    to the user. If an input is invalid, request corrected numeric values and explain
+    the issue briefly before retrying.
+  expected_output: >
+    A concise confirmation containing the numeric sum returned by the adder_tool,
+    for example: "The sum of 3 and 5 is 8." The agent must delegate computation to
+    adder_tool and present only the tool's numeric result and a short confirmation.
+  agent: sum_agent

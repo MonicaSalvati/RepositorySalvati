@@ -1,0 +1,8 @@
+write_topic_paragraph:
+  description: >
+    Research the input topic ({topic}) online, then use both the research findings 
+    and the user's question ({user_query}) to write a clear and concise paragraph.
+  expected_output: >
+    A well-written paragraph in english that synthesizes online research about the topic and directly addresses the user's question.
+    Example 1: {"paragraph": "<written_paragraph_in_english>"}
+  agent: topic_paragraph_writer

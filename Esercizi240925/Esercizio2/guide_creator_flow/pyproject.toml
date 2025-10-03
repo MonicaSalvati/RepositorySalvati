@@ -1,0 +1,36 @@
+[project]
+name = "guide_creator_flow"
+version = "0.1.0"
+description = "guide_creator_flow using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "azure-ai-textanalytics>=5.3.0",
+    "azure-core>=1.35.1",
+    "crewai[tools]>=0.193.2,<1.0.0",
+    "faiss-cpu>=1.12.0",
+    "fitz>=0.0.1.dev2",
+    "langchain>=0.3.27",
+    "langchain-community>=0.3.29",
+    "langchain-openai>=0.3.33",
+    "llm-input-sanitizer>=0.2.1",
+    "opik>=1.8.57",
+    "pymupdf>=1.26.4",
+    "pypdf2>=3.0.1",
+    "qdrant-client>=1.15.1",
+    "ragas>=0.3.5",
+    "streamlit>=1.50.0",
+    "streamlit-option-menu>=0.4.0",
+]
+
+[project.scripts]
+kickoff = "guide_creator_flow.main:kickoff"
+run_crew = "guide_creator_flow.main:kickoff"
+plot = "guide_creator_flow.main:plot"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "flow"
